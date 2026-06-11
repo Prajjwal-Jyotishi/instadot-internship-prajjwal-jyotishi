@@ -1,0 +1,4 @@
+# Project Dependencies
+pip
+setuptools
+wheel
