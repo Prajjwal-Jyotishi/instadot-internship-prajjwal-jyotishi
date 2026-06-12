@@ -1,62 +1,116 @@
-\# Instadot Internship - Day 01
+# Instadot Python Developer Internship
 
+**Intern Name:** Prajjwal Jyotishi  
+**Repository:** Instadot Internship Tasks and Submissions
 
+---
 
-\## Project Overview
+# Day 01 – Environment Setup
 
-This project contains a Python onboarding utility script.
+## Objective
 
+Set up the Python development environment and configure the GitHub workflow required for internship tasks.
 
+## Tasks Completed
 
-\## Files Included
+- Installed Python 3.10+
+- Created and configured a virtual environment
+- Set up Git and GitHub
+- Created and initialized the internship repository
+- Performed initial commit and push
 
-\- system\_check.py
+## Files Included
 
-\- requirements.txt
+- `system_check.py`
+- `requirements.txt`
+- `logs/onboarding.log`
 
-\- logs/onboarding.log
+---
 
+# Day 02 – Student Management System
 
+## Objective
 
-\## How to Run
+Develop a menu-driven Student Management System using Python with CRUD operations, search and filter functionality, and exception handling.
 
+## Features Implemented
 
+### CRUD Operations
 
-\### Activate Virtual Environment
+- Create Student Record
+- Read/View Student Records
+- Update Student Information
+- Delete Student Record
 
+### Additional Features
 
+- Search students by name
+- Filter students by age
+- Input validation using exception handling
+- User-friendly menu-driven interface
 
-.\\venv\\Scripts\\activate
+## Technologies and Concepts Used
 
+- Python
+- Functions
+- Lists
+- Dictionaries
+- Loops
+- Conditional Statements
+- Exception Handling
 
+## Project File
 
-\### Run Script
+- `student_management.py`
 
+## Program Workflow
 
+1. Add Student
+2. View Students
+3. Update Student
+4. Delete Student
+5. Search Student
+6. Filter Students
+7. Exit Program
 
-python system\_check.py
+## How to Run
 
+```bash
+python student_management.py
+```
 
+## Learning Outcomes
 
-\### View Log File
+Through this task, the following concepts were practiced:
 
+- Data storage using lists and dictionaries
+- Implementation of CRUD operations
+- Search and filtering techniques
+- Exception handling and input validation
+- Structured program design using functions
 
+---
 
-type logs\\onboarding.log
+## Repository Structure
 
+```text
+instadot-internship-prajjwal-jyotishi/
+│
+├── logs/
+├── venv/
+│   └── student_management.py
+├── README.md
+├── requirements.txt
+└── system_check.py
+```
 
+---
 
-\## Output
+## Submission Status
 
+✅ Day 01 Completed  
+✅ Day 02 Completed
 
+---
 
-The script:
-
-1\. Reads user name.
-
-2\. Reads active track.
-
-3\. Generates a high-precision timestamp.
-
-4\. Appends onboarding information to logs/onboarding.log.
-
+This repository contains daily internship assignments, source code, and supporting documentation completed during the Instadot Python Developer Internship.
