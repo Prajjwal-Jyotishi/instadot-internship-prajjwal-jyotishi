@@ -1,31 +1,4 @@
-# Instadot Python Developer Internship
 
-**Intern Name:** Prajjwal Jyotishi  
-**Repository:** Instadot Internship Tasks and Submissions
-
----
-
-# Day 01 – Environment Setup
-
-## Objective
-
-Set up the Python development environment and configure the GitHub workflow required for internship tasks.
-
-## Tasks Completed
-
-- Installed Python 3.10+
-- Created and configured a virtual environment
-- Set up Git and GitHub
-- Created and initialized the internship repository
-- Performed initial commit and push
-
-## Files Included
-
-- `system_check.py`
-- `requirements.txt`
-- `logs/onboarding.log`
-
----
 
 # Day 02 – Student Management System
 
