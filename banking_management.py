@@ -1,80 +1,93 @@
-"""
-Day 03 - Banking Management System
-"""
-
-balance = 0.0
+balance = 0
 transaction_history = []
 
+
 def deposit():
-    global balance, transaction_history
+    global balance
+
     try:
-        amount = float(input("Enter amount to deposit: $"))
+        amount = float(input("Enter amount to deposit: "))
+
         if amount <= 0:
-            print("Error: Deposit amount must be greater than zero.")
-            return
-        
+            raise ValueError("Amount must be greater than 0.")
+
         balance += amount
-        transaction_history.append(f"Deposited: ${amount:.2f}")
-        print(f"Successfully deposited ${amount:.2f}.")
-    except ValueError:
-        print("Invalid input! Please enter a valid numerical amount.")
+        transaction_history.append(f"Deposited ₹{amount}")
+
+        print("Deposit successful!")
+
+    except ValueError as e:
+        print("Error:", e)
+
 
 def withdraw():
-    global balance, transaction_history
+    global balance
+
     try:
-        amount = float(input("Enter amount to withdraw: $"))
+        amount = float(input("Enter amount to withdraw: "))
+
         if amount <= 0:
-            print("Error: Withdrawal amount must be greater than zero.")
-            return
-        
+            raise ValueError("Amount must be greater than 0.")
+
         if amount > balance:
-            print("Insufficient funds! Transaction denied.")
-            return
-            
+            raise ValueError("Insufficient balance.")
+
         balance -= amount
-        transaction_history.append(f"Withdrew: ${amount:.2f}")
-        print(f"Successfully withdrew ${amount:.2f}.")
-    except ValueError:
-        print("Invalid input! Please enter a valid numerical amount.")
+        transaction_history.append(f"Withdrawn ₹{amount}")
+
+        print("Withdrawal successful!")
+
+    except ValueError as e:
+        print("Error:", e)
+
 
 def check_balance():
-    global balance
-    print(f"\nCurrent Account Balance: ${balance:.2f}")
+    print(f"Current Balance: ₹{balance}")
 
-def view_history():
-    global transaction_history
-    print("\n--- Transaction History ---")
+
+def show_transaction_history():
+
     if not transaction_history:
-        print("No transactions have been made yet.")
-    else:
-        for index, transaction in enumerate(transaction_history, 1):
-            print(f"{index}. {transaction}")
-    print("---------------------------")
+        print("No transactions found.")
+        return
+
+    print("\nTransaction History")
+
+    for transaction in transaction_history:
+        print(transaction)
+
 
 def main():
-    while True:
-        print("\n*** Banking Management System ***")
-        print("1. Deposit Money")
-        print("2. Withdraw Money")
-        print("3. Check Account Balance")
-        print("4. View Transaction History")
-        print("5. Exit")
-        
-        choice = input("Please select an option (1-5): ")
-        
-        if choice == '1':
-            deposit()
-        elif choice == '2':
-            withdraw()
-        elif choice == '3':
-            check_balance()
-        elif choice == '4':
-            view_history()
-        elif choice == '5':
-            print("Thank you for using the Banking Management System. Goodbye!")
-            break
-        else:
-            print("Invalid choice! Please select a number between 1 and 5.")
 
-if __name__ == "__main__":
-    main()
+    while True:
+
+        print("\n===== Banking Management System =====")
+        print("1. Deposit")
+        print("2. Withdraw")
+        print("3. Balance Inquiry")
+        print("4. Transaction History")
+        print("5. Exit")
+
+        choice = input("Enter choice: ")
+
+        if choice == "1":
+            deposit()
+
+        elif choice == "2":
+            withdraw()
+
+        elif choice == "3":
+            check_balance()
+
+        elif choice == "4":
+            show_transaction_history()
+
+        elif choice == "5":
+            print("Thank you!")
+            break
+
+        else:
+            print("Invalid choice.")
+
+
+main()
