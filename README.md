@@ -99,10 +99,6 @@ Through this project, the following concepts were practiced:
 * Modular Programming
 * Financial Data Processing
 
-## Author
 
-**Prajjwal Jyotishi**
 
-## Internship
 
-Python Developer Internship – Day 04 Assignment
