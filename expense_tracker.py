@@ -1,17 +1,19 @@
-"""
-
-Day-04  PERSONAL EXPENSE TRACKER
-
-"""
+# Day 04 - Personal Expense Tracker
+# Instadot Analytics Internship - Prajjwal Jyotishi
+#
+# Features:
+# 1. Record salary/income and expenses
+# 2. Save all data to a JSON file (persistent storage)
+# 3. Show monthly savings summary
+# 4. Show category-wise expense report
 
 import json
 import os
 import datetime
 
-# --------------------------------------------------
 DATA_FILE = "transactions.json"
 
-EXPENSE_CATEGORIES = [
+categories = [
     "Food & Dining",
     "Rent & Housing",
     "Transport",
@@ -20,242 +22,223 @@ EXPENSE_CATEGORIES = [
     "Entertainment",
     "Education",
     "Utilities",
-    "Other",
+    "Other"
 ]
 
 
-# ──────────────────────────────────────────────────
-#  Flat-File Database  (JSON persistence)
-# ──────────────────────────────────────────────────
-
-def load_transactions():
-    """Read the ledger from the JSON flat-file."""
+# Load saved transactions from the JSON file
+def load_data():
     if not os.path.exists(DATA_FILE):
         return []
     try:
-        with open(DATA_FILE, "r", encoding="utf-8") as f:
+        with open(DATA_FILE, "r") as f:
             return json.load(f)
-    except (json.JSONDecodeError, IOError):
-        print("Warning: data file unreadable. Starting fresh.")
+    except:
+        print("Could not load data. Starting fresh.")
         return []
 
 
-def save_transactions(transactions):
-    """Write the full ledger back to the JSON flat-file."""
+# Save all transactions to the JSON file
+def save_data(transactions):
+    with open(DATA_FILE, "w") as f:
+        json.dump(transactions, f, indent=4)
+
+
+# Add a salary or income entry
+def add_income(transactions):
+    print("\n--- Add Income / Salary ---")
     try:
-        with open(DATA_FILE, "w", encoding="utf-8") as f:
-            json.dump(transactions, f, indent=4, ensure_ascii=False)
-    except IOError as e:
-        print(f"Error saving data: {e}")
-
-
-# ──────────────────────────────────────────────────
-#  Transaction Recording Engine
-# ──────────────────────────────────────────────────
-
-def record_salary(transactions):
-    """Record an incoming salary / income payload."""
-    print("\n--- Add Salary / Income ---")
-    try:
-        amount = float(input("Enter salary amount (Rs.): "))
+        amount = float(input("Enter amount (Rs.): "))
         if amount <= 0:
-            raise ValueError("Amount must be greater than zero.")
+            print("Amount should be more than 0.")
+            return
 
-        source = input("Source (e.g. Company, Freelance): ").strip() or "Salary"
-        note   = input("Note (optional): ").strip()
+        source = input("Source (Company / Freelance etc.): ").strip()
+        if not source:
+            source = "Salary"
+
+        note = input("Any note (optional): ").strip()
+        today = datetime.date.today().isoformat()
 
         entry = {
-            "type"    : "income",
+            "type": "income",
             "category": "Salary",
-            "amount"  : round(amount, 2),
-            "source"  : source,
-            "note"    : note,
-            "date"    : datetime.date.today().isoformat(),
+            "amount": round(amount, 2),
+            "source": source,
+            "note": note,
+            "date": today
         }
 
         transactions.append(entry)
-        save_transactions(transactions)
-        print(f"\n  Income of Rs.{amount:,.2f} recorded successfully.")
+        save_data(transactions)
+        print(f"Income of Rs.{amount:.2f} added successfully!")
 
-    except ValueError as e:
-        print(f"  Invalid input: {e}")
+    except ValueError:
+        print("Please enter a valid number.")
 
 
-def record_expense(transactions):
-    """Record a debit expense under a chosen category."""
+# Add an expense entry
+def add_expense(transactions):
     print("\n--- Add Expense ---")
-    print("  Select a category:")
-    for i, cat in enumerate(EXPENSE_CATEGORIES, start=1):
-        print(f"    {i}. {cat}")
+    print("Select category:")
+    for i, cat in enumerate(categories, start=1):
+        print(f"  {i}. {cat}")
 
     try:
-        cat_choice = int(input("  Enter category number: "))
-        if not (1 <= cat_choice <= len(EXPENSE_CATEGORIES)):
-            raise ValueError("Category number out of range.")
+        choice = int(input("Enter category number: "))
+        if choice < 1 or choice > len(categories):
+            print("Invalid category number.")
+            return
 
-        category    = EXPENSE_CATEGORIES[cat_choice - 1]
-        amount      = float(input(f"  Enter amount (Rs.) [{category}]: "))
+        cat = categories[choice - 1]
+        amount = float(input(f"Enter amount (Rs.) for {cat}: "))
 
         if amount <= 0:
-            raise ValueError("Amount must be greater than zero.")
+            print("Amount should be more than 0.")
+            return
 
-        description = input("  Description: ").strip() or category
+        desc = input("Description (optional): ").strip()
+        if not desc:
+            desc = cat
+
+        today = datetime.date.today().isoformat()
 
         entry = {
-            "type"       : "expense",
-            "category"   : category,
-            "amount"     : round(amount, 2),
-            "description": description,
-            "date"       : datetime.date.today().isoformat(),
+            "type": "expense",
+            "category": cat,
+            "amount": round(amount, 2),
+            "description": desc,
+            "date": today
         }
 
         transactions.append(entry)
-        save_transactions(transactions)
-        print(f"\n  Expense of Rs.{amount:,.2f} under '{category}' recorded.")
+        save_data(transactions)
+        print(f"Expense of Rs.{amount:.2f} under '{cat}' added!")
 
-    except ValueError as e:
-        print(f"  Invalid input: {e}")
-
-
-# ──────────────────────────────────────────────────
-#  Automated Ledger Processing
-# ──────────────────────────────────────────────────
-
-def parse_monthly_summary(transactions):
-    """Parse ledger entries and extract monthly income/expense totals."""
-    monthly = {}
-    for t in transactions:
-        key = t["date"][:7]   # YYYY-MM
-        if key not in monthly:
-            monthly[key] = {"income": 0.0, "expenses": 0.0}
-        if t["type"] == "income":
-            monthly[key]["income"] += t["amount"]
-        else:
-            monthly[key]["expenses"] += t["amount"]
-    return monthly
+    except ValueError:
+        print("Please enter a valid number.")
 
 
-def show_monthly_savings(transactions):
-    """Display automatically computed monthly savings balances."""
+# Show all recorded transactions
+def show_all(transactions):
     if not transactions:
-        print("\n  No transactions recorded yet.")
+        print("\nNo transactions yet.")
         return
 
-    monthly = parse_monthly_summary(transactions)
+    print("\n" + "-" * 60)
+    print("           ALL TRANSACTIONS")
+    print("-" * 60)
+    print(f"{'No.':<5} {'Date':<12} {'Type':<10} {'Category':<20} {'Amount'}")
+    print("-" * 60)
 
-    print("\n" + "=" * 54)
-    print("         MONTHLY SAVINGS SUMMARY")
-    print("=" * 54)
-    print(f"  {'Month':<10} {'Income':>12} {'Expenses':>12} {'Savings':>12}")
-    print("  " + "-" * 50)
+    for i, t in enumerate(transactions, start=1):
+        sign = "+" if t["type"] == "income" else "-"
+        print(f"{i:<5} {t['date']:<12} {t['type'].upper():<10} {t['category']:<20} {sign}Rs.{t['amount']:.2f}")
 
-    for month, data in sorted(monthly.items()):
-        income   = data["income"]
-        expenses = data["expenses"]
-        savings  = income - expenses
-        status   = "SAVED" if savings >= 0 else "DEFICIT"
-        print(f"  {month:<10} Rs.{income:>9,.2f} Rs.{expenses:>9,.2f} Rs.{savings:>9,.2f}  [{status}]")
-
-    print("=" * 54)
+    print("-" * 60)
+    print(f"Total records: {len(transactions)}")
 
 
-# ──────────────────────────────────────────────────
-#  Categorical Data Reporting
-# ──────────────────────────────────────────────────
+# Calculate and show monthly savings
+def show_monthly_savings(transactions):
+    if not transactions:
+        print("\nNo transactions to process.")
+        return
 
+    # Group data by month (YYYY-MM)
+    monthly = {}
+    for t in transactions:
+        month = t["date"][:7]
+        if month not in monthly:
+            monthly[month] = {"income": 0, "expenses": 0}
+        if t["type"] == "income":
+            monthly[month]["income"] += t["amount"]
+        else:
+            monthly[month]["expenses"] += t["amount"]
+
+    print("\n" + "-" * 55)
+    print("          MONTHLY SAVINGS SUMMARY")
+    print("-" * 55)
+    print(f"{'Month':<12} {'Income':>12} {'Expenses':>12} {'Savings':>12}")
+    print("-" * 55)
+
+    for month in sorted(monthly):
+        income = monthly[month]["income"]
+        expenses = monthly[month]["expenses"]
+        savings = income - expenses
+        status = "SAVED" if savings >= 0 else "DEFICIT"
+        print(f"{month:<12} Rs.{income:>8.2f} Rs.{expenses:>8.2f} Rs.{savings:>8.2f}  ({status})")
+
+    print("-" * 55)
+
+
+# Show total spending per category
 def show_category_report(transactions):
-    """Aggregate debit counts per category and print the report."""
     expenses = [t for t in transactions if t["type"] == "expense"]
 
     if not expenses:
-        print("\n  No expense records to report.")
+        print("\nNo expenses recorded yet.")
         return
 
+    # Add up amounts per category
     totals = {}
     for t in expenses:
         cat = t["category"]
-        totals[cat] = totals.get(cat, 0.0) + t["amount"]
+        if cat not in totals:
+            totals[cat] = 0
+        totals[cat] += t["amount"]
 
     grand_total = sum(totals.values())
 
-    print("\n" + "=" * 56)
-    print("        CATEGORY-WISE EXPENSE REPORT")
-    print("=" * 56)
-    print(f"  {'Category':<20} {'Amount':>12} {'Share':>8}")
-    print("  " + "-" * 52)
+    print("\n" + "-" * 50)
+    print("       CATEGORY-WISE EXPENSE REPORT")
+    print("-" * 50)
+    print(f"{'Category':<22} {'Amount':>10} {'%':>8}")
+    print("-" * 50)
 
+    # Sort by highest spending first
     for cat, amt in sorted(totals.items(), key=lambda x: x[1], reverse=True):
-        pct = (amt / grand_total * 100) if grand_total else 0
-        bar = "#" * int(pct / 5)
-        print(f"  {cat:<20} Rs.{amt:>9,.2f} {pct:>6.1f}%  {bar}")
+        pct = (amt / grand_total) * 100
+        print(f"{cat:<22} Rs.{amt:>7.2f} {pct:>7.1f}%")
 
-    print("  " + "-" * 52)
-    print(f"  {'TOTAL':<20} Rs.{grand_total:>9,.2f}")
-    print("=" * 56)
-
-
-# ──────────────────────────────────────────────────
-#  View Full Ledger
-# ──────────────────────────────────────────────────
-
-def view_all_transactions(transactions):
-    """Print all ledger entries in a clean table."""
-    if not transactions:
-        print("\n  No transactions found.")
-        return
-
-    print("\n" + "=" * 68)
-    print("               FULL TRANSACTION LEDGER")
-    print("=" * 68)
-    print(f"  {'#':<4} {'Date':<12} {'Type':<9} {'Category':<20} {'Amount':>14}")
-    print("  " + "-" * 62)
-
-    for i, t in enumerate(transactions, start=1):
-        sign     = "+" if t["type"] == "income" else "-"
-        category = t.get("category", "-")
-        print(f"  {i:<4} {t['date']:<12} {t['type'].upper():<9} {category:<20} {sign}Rs.{t['amount']:>9,.2f}")
-
-    print("=" * 68)
-    print(f"  Total entries: {len(transactions)}")
+    print("-" * 50)
+    print(f"{'TOTAL':<22} Rs.{grand_total:>7.2f}")
+    print("-" * 50)
 
 
-# ──────────────────────────────────────────────────
-#  Main Menu
-# ──────────────────────────────────────────────────
-
+# Main menu
 def main():
-    transactions = load_transactions()
+    transactions = load_data()
 
     while True:
-        print("\n" + "=" * 42)
-        print("    PERSONAL EXPENSE TRACKER  (Rs.)")
-        print("=" * 42)
-        print("  1. Add Salary / Income")
-        print("  2. Add Expense")
-        print("  3. View All Transactions")
-        print("  4. Monthly Savings Summary")
-        print("  5. Category-wise Expense Report")
-        print("  6. Exit")
-        print("-" * 42)
+        print("\n==============================")
+        print("   PERSONAL EXPENSE TRACKER")
+        print("==============================")
+        print("1. Add Salary / Income")
+        print("2. Add Expense")
+        print("3. View All Transactions")
+        print("4. Monthly Savings Summary")
+        print("5. Category-wise Report")
+        print("6. Exit")
+        print("------------------------------")
 
-        choice = input("  Select option (1-6): ").strip()
+        choice = input("Choose an option (1-6): ").strip()
 
         if choice == "1":
-            record_salary(transactions)
+            add_income(transactions)
         elif choice == "2":
-            record_expense(transactions)
+            add_expense(transactions)
         elif choice == "3":
-            view_all_transactions(transactions)
+            show_all(transactions)
         elif choice == "4":
             show_monthly_savings(transactions)
         elif choice == "5":
             show_category_report(transactions)
         elif choice == "6":
-            print("\n  Goodbye! Your data has been saved.\n")
+            print("\nBye! Your data is saved.")
             break
         else:
-            print("  Invalid option. Please enter 1-6.")
+            print("Invalid choice. Please pick 1 to 6.")
 
 
-if __name__ == "__main__":
-    main()
+main()
