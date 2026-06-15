@@ -1,28 +1,108 @@
-# Instadot Python Developer Internship
+# Day 04 – Expense Tracker Application
 
-**Intern Name:** Prajjwal Jyotishi
-**Repository:** Internship Tasks and Daily Submissions
+## Objective
 
-## Day 01 – Development Environment Setup
+Develop a menu-driven Expense Tracker Application in Python to manage personal finances by recording income and expenses, generating summaries, and storing transaction data using JSON file persistence.
 
-### Objective
+## Features Implemented
 
-Prepare the Python development environment and establish the GitHub workflow required for internship assignments and project submissions.
+### Transaction Recording
 
-### Tasks Completed
+* Add income transactions
+* Add expense transactions
+* Record transaction details including:
 
-* Installed Python 3.10 or later
-* Created and activated a virtual environment
-* Configured Git and GitHub
-* Created and initialized the internship repository
-* Performed the initial commit and pushed the repository to GitHub
+  * Transaction type
+  * Amount
+  * Category
+  * Description
+  * Date
 
-### Files Included
+### Automated Ledger Processing
 
-* `system_check.py` – Verifies Python installation and environment setup
-* `requirements.txt` – Lists project dependencies
-* `logs/onboarding.log` – Records onboarding and setup activities
+* Calculate total income
+* Calculate total expenses
+* Calculate net savings automatically
 
-### Outcome
+### Data Persistence
 
-Successfully configured the local development environment, established version control using Git, and connected the project repository to GitHub for future task submissions.
+* Store transaction records in a JSON file
+* Load existing transaction data on application startup
+* Save updates automatically after each transaction
+
+### Reporting System
+
+* View all recorded transactions
+* Generate monthly financial summary
+* Display category-wise expense reports
+* Track spending across different categories
+
+## Technologies Used
+
+* Python 3
+* JSON File Handling
+* Functions and Modular Programming
+* Exception Handling
+* Lists and Dictionaries
+
+## Files Included
+
+### expense_tracker.py
+
+Main application file containing:
+
+* Transaction management functions
+* Data persistence logic
+* Financial calculations
+* Reporting features
+* Menu-driven interface
+
+### expenses.json
+
+JSON database file used to store transaction records persistently.
+
+## Functionalities
+
+### Add Income
+
+Allows users to record salary or other income sources.
+
+### Add Expense
+
+Allows users to record expenses with category and description.
+
+### View Transactions
+
+Displays all stored income and expense records.
+
+### Monthly Summary
+
+Calculates and displays:
+
+* Total Income
+* Total Expenses
+* Net Savings
+
+### Category Report
+
+Displays total expenses grouped by category.
+
+## Learning Outcomes
+
+Through this project, the following concepts were practiced:
+
+* Python Functions
+* File Handling
+* JSON Serialization
+* Data Structures (Lists and Dictionaries)
+* Exception Handling
+* Modular Programming
+* Financial Data Processing
+
+## Author
+
+**Prajjwal Jyotishi**
+
+## Internship
+
+Python Developer Internship – Day 04 Assignment
