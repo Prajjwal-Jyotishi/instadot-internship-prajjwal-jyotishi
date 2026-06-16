@@ -1,28 +1,82 @@
-# Instadot Python Developer Internship
+# Employee Payroll Management System
 
-**Intern Name:** Prajjwal Jyotishi
-**Repository:** Internship Tasks and Daily Submissions
+## About
 
-## Day 01 – Development Environment Setup
+This is a simple Python project that helps manage employee payroll records. It allows users to register employees, calculate salaries, search employee details, and generate payroll reports.
 
-### Objective
+## Features
 
-Prepare the Python development environment and establish the GitHub workflow required for internship assignments and project submissions.
+* Employee Registration
+* Gross Salary Calculation
+* Net Salary Calculation
+* Store employee data in JSON format
+* Search employee by ID
+* Generate payroll summary
+* Export payroll report to CSV
 
-### Tasks Completed
+## Salary Calculation
 
-* Installed Python 3.10 or later
-* Created and activated a virtual environment
-* Configured Git and GitHub
-* Created and initialized the internship repository
-* Performed the initial commit and pushed the repository to GitHub
+**Gross Salary**
 
-### Files Included
+```text
+Gross Salary = Basic Salary + Bonus
+```
 
-* `system_check.py` – Verifies Python installation and environment setup
-* `requirements.txt` – Lists project dependencies
-* `logs/onboarding.log` – Records onboarding and setup activities
+**Net Salary**
 
-### Outcome
+```text
+Net Salary = Gross Salary - Deductions
+```
 
-Successfully configured the local development environment, established version control using Git, and connected the project repository to GitHub for future task submissions.
+## Technologies Used
+
+* Python
+* JSON
+* CSV
+
+## Project Structure
+
+```text
+EmployeePayrollManagement/
+│
+├── payroll.py
+├── employees.json
+├── payroll_report.csv
+└── README.md
+```
+
+## How to Run
+
+1. Open the project folder.
+2. Run the Python file:
+
+```bash
+python payroll.py
+```
+
+## Menu
+
+```text
+1. Register Employee
+2. Search Employee
+3. Payroll Summary
+4. Export Payroll Report
+5. Exit
+```
+
+## Sample Employee
+
+```text
+Employee ID: E101
+Name: Rahul
+Basic Salary: 30000
+Bonus: 5000
+Deductions: 2000
+```
+
+## Files Generated
+
+* `employees.json` – Stores employee records.
+* `payroll_report.csv` – Stores payroll data in CSV format.
+
+
