@@ -1,104 +1,82 @@
-# Day 04 – Expense Tracker Application
+# Employee Payroll Management System
 
-## Objective
+## About
 
-Develop a menu-driven Expense Tracker Application in Python to manage personal finances by recording income and expenses, generating summaries, and storing transaction data using JSON file persistence.
+This is a simple Python project that helps manage employee payroll records. It allows users to register employees, calculate salaries, search employee details, and generate payroll reports.
 
-## Features Implemented
+## Features
 
-### Transaction Recording
+* Employee Registration
+* Gross Salary Calculation
+* Net Salary Calculation
+* Store employee data in JSON format
+* Search employee by ID
+* Generate payroll summary
+* Export payroll report to CSV
 
-* Add income transactions
-* Add expense transactions
-* Record transaction details including:
+## Salary Calculation
 
-  * Transaction type
-  * Amount
-  * Category
-  * Description
-  * Date
+**Gross Salary**
 
-### Automated Ledger Processing
+```text
+Gross Salary = Basic Salary + Bonus
+```
 
-* Calculate total income
-* Calculate total expenses
-* Calculate net savings automatically
+**Net Salary**
 
-### Data Persistence
-
-* Store transaction records in a JSON file
-* Load existing transaction data on application startup
-* Save updates automatically after each transaction
-
-### Reporting System
-
-* View all recorded transactions
-* Generate monthly financial summary
-* Display category-wise expense reports
-* Track spending across different categories
+```text
+Net Salary = Gross Salary - Deductions
+```
 
 ## Technologies Used
 
-* Python 3
-* JSON File Handling
-* Functions and Modular Programming
-* Exception Handling
-* Lists and Dictionaries
+* Python
+* JSON
+* CSV
 
-## Files Included
+## Project Structure
 
-### expense_tracker.py
+```text
+EmployeePayrollManagement/
+│
+├── payroll.py
+├── employees.json
+├── payroll_report.csv
+└── README.md
+```
 
-Main application file containing:
+## How to Run
 
-* Transaction management functions
-* Data persistence logic
-* Financial calculations
-* Reporting features
-* Menu-driven interface
+1. Open the project folder.
+2. Run the Python file:
 
-### expenses.json
+```bash
+python payroll.py
+```
 
-JSON database file used to store transaction records persistently.
+## Menu
 
-## Functionalities
+```text
+1. Register Employee
+2. Search Employee
+3. Payroll Summary
+4. Export Payroll Report
+5. Exit
+```
 
-### Add Income
+## Sample Employee
 
-Allows users to record salary or other income sources.
+```text
+Employee ID: E101
+Name: Rahul
+Basic Salary: 30000
+Bonus: 5000
+Deductions: 2000
+```
 
-### Add Expense
+## Files Generated
 
-Allows users to record expenses with category and description.
-
-### View Transactions
-
-Displays all stored income and expense records.
-
-### Monthly Summary
-
-Calculates and displays:
-
-* Total Income
-* Total Expenses
-* Net Savings
-
-### Category Report
-
-Displays total expenses grouped by category.
-
-## Learning Outcomes
-
-Through this project, the following concepts were practiced:
-
-* Python Functions
-* File Handling
-* JSON Serialization
-* Data Structures (Lists and Dictionaries)
-* Exception Handling
-* Modular Programming
-* Financial Data Processing
-
-
+* `employees.json` – Stores employee records.
+* `payroll_report.csv` – Stores payroll data in CSV format.
 
 
