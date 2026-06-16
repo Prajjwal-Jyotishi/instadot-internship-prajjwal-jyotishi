@@ -1,163 +1,121 @@
-# 🧾 Employee Payroll Management System
+# Day 05 – Employee Payroll Management System
 
-> **Day 05 — Instadot Analytics Internship**
-> Developed by **Prajjwal Jyotishi**
+## Objective
 
----
+Develop a menu-driven Employee Payroll Management System in Python to manage employee salary records by registering employees, calculating salaries, searching records, generating payroll summaries, and exporting reports using JSON file persistence.
 
-## 📌 Overview
+## Features Implemented
 
-A command-line based **Employee Payroll Management System** built in Python that allows organizations to manage employee records efficiently. It supports employee registration, salary computation, record search, payroll summaries, and report exports — all with persistent data storage using JSON.
+### Employee Registration
 
----
+* Register new employees with the following details:
 
-## 🚀 Features
+  * Employee ID
+  * Employee Name
+  * Basic Salary
+  * Bonus
+  * Deductions
 
-| Feature | Description |
-|---|---|
-| ✅ Register Employee | Add new employees with salary details |
-| 🔍 Search by ID | Instantly look up any employee record |
-| 📊 Payroll Summary | View total employees, gross & net salary |
-| 📤 Export to CSV | Generate downloadable payroll reports |
-| 💾 Persistent Storage | All data saved to `employees.json` |
-| 🛡️ Duplicate Check | Prevents duplicate Employee IDs |
-| ⚠️ Input Validation | Handles invalid/non-numeric inputs gracefully |
+* Automatically calculates:
 
----
+  * Gross Salary
+  * Net Salary
 
-## 🧮 Salary Calculation Logic
+* Prevents duplicate Employee IDs
 
-```
+### Employee Search
+
+* Search and retrieve employee details by Employee ID
+* Displays all stored information for the matched employee
+
+### Payroll Summary
+
+* Displays total number of registered employees
+* Calculates and displays total gross salary
+* Calculates and displays total net salary
+
+### Payroll Report Export
+
+* Exports all employee records to a CSV file
+* Report includes all salary fields for each employee
+
+### Data Persistence
+
+* Stores all employee records in a JSON file
+* Loads existing data automatically on application startup
+* Saves updates after every registration
+
+## Salary Calculation
+
+**Gross Salary**
+
+```text
 Gross Salary = Basic Salary + Bonus
-Net Salary   = Gross Salary - Deductions
 ```
 
----
+**Net Salary**
 
-## 🛠️ Technologies Used
-
-- **Language:** Python 3.x
-- **Storage:** JSON (persistent data)
-- **Export:** CSV (payroll reports)
-- **Modules:** `json`, `csv`, `os`
-
----
-
-## 📁 Project Structure
-
-```
-instadot-internship-prajjwal-jyotishi/
-│
-├── employee_payroll_management_system.py   # Main application file
-├── employees.json                          # Auto-generated employee data store
-├── payroll_report.csv                      # Auto-generated CSV export
-│
-└── output_screenshots/                     # Output proof screenshots
-    ├── output_register_employee.png
-    ├── output_search_employee.png
-    └── output_payroll_summary_export.png
+```text
+Net Salary = Gross Salary - Deductions
 ```
 
----
+## Technologies Used
 
-## ▶️ How to Run
+* Python 3
+* JSON File Handling
+* CSV File Handling
+* Functions and Modular Programming
+* Exception Handling
+* Lists and Dictionaries
 
-**1. Clone the repository**
-```bash
-git clone https://github.com/Prajjwal-Jyotishi/instadot-internship-prajjwal-jyotishi.git
-cd instadot-internship-prajjwal-jyotishi
-git checkout day-05
-```
+## Files Included
 
-**2. Run the program**
-```bash
-python employee_payroll_management_system.py
-```
+### employee_payroll_management_system.py
 
-> No additional packages required — uses Python standard library only.
+Main application file containing:
 
----
+* Employee registration logic
+* Salary calculation functions
+* Search functionality
+* Payroll summary generation
+* CSV export feature
+* Menu-driven interface
 
-## 📋 Menu Options
+### employees.json
 
-```
-===== Employee Payroll Management System =====
-1. Register Employee
-2. Search Employee
-3. Payroll Summary
-4. Export Payroll Report
-5. Exit
-```
+JSON file used to store all employee records persistently.
 
----
+### payroll_report.csv
 
-## 💡 Sample Usage
+CSV file generated when the export option is selected from the menu.
 
-### ➕ Registering an Employee
-```
-Enter Employee ID: 01
-Enter Employee Name: Prajjwal
-Enter Basic Salary: 5000
-Enter Bonus: 500
-Enter Deductions: 100
+## Functionalities
 
-Employee Registered Successfully!
-```
+### Register Employee
 
-### 🔍 Searching an Employee
-```
-Enter Employee ID to Search: 01
+Allows users to add a new employee with salary details. Validates that the Employee ID is unique and all numeric inputs are valid.
 
-Employee Found
-----------------
-ID: 01
-Name: Prajjwal
-Basic Salary: 5000.0
-Bonus: 500.0
-Deductions: 100.0
-Gross Salary: 5500.0
-Net Salary: 5400.0
-```
+### Search Employee
 
-### 📊 Payroll Summary
-```
-Payroll Summary
-----------------
-Total Employees : 3
-Total Gross Salary : 93500.0
-Total Net Salary : 87400.0
-```
+Allows users to search for an employee by their ID and view all their salary details.
 
-### 📤 Export Report
-```
-Payroll report exported successfully.
-```
+### Payroll Summary
 
----
+Displays aggregate payroll data including total number of employees and total gross and net salary.
 
-## 🖼️ Output Screenshots
+### Export Payroll Report
 
-### Employee Registration & Search
-![Register & Search Output](output_screenshots/output_register_employee.png)
+Exports all employee records into a CSV file named payroll_report.csv.
 
-### Employee Search Details
-![Search Details Output](output_screenshots/output_search_employee.png)
+## Learning Outcomes
 
-### Payroll Summary & CSV Export
-![Summary & Export Output](output_screenshots/output_payroll_summary_export.png)
+Through this project, the following concepts were practiced:
 
----
-
-## 📂 Generated Files
-
-| File | Description |
-|---|---|
-| `employees.json` | Stores all employee records in JSON format |
-| `payroll_report.csv` | Exported CSV report with all payroll data |
-
----
-
-## 👨‍💻 Author
-
-**Prajjwal Jyotishi**
-Instadot Analytics Internship — Day 05
+* Python Functions
+* File Handling
+* JSON Serialization
+* CSV Writing
+* Data Structures (Lists and Dictionaries)
+* Exception Handling
+* Modular Programming
+* Payroll Data Processing
