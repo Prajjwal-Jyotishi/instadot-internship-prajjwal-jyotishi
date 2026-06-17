@@ -56,3 +56,9 @@ JSON file storing the quiz questions with options and correct answers.
 * Random Shuffling
 * Exception Handling
 * Score Calculation and Conditional Logic
+
+## Output Screenshots
+
+![Output 1](output_screenshots/output1.png)
+
+![Output 2](output_screenshots/output2.png)
