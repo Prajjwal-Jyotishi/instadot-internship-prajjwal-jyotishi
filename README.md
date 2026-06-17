@@ -1,121 +1,58 @@
-# Day 05 – Employee Payroll Management System
+# Day 06 – Quiz Application
 
 ## Objective
 
-Develop a menu-driven Employee Payroll Management System in Python to manage employee salary records by registering employees, calculating salaries, searching records, generating payroll summaries, and exporting reports using JSON file persistence.
+Build a multiple-choice quiz application in Python that reads questions from a JSON file, presents them in random order, validates user input, and displays the final score with performance feedback.
 
 ## Features Implemented
 
-### Employee Registration
+### Store Questions in JSON File
 
-* Register new employees with the following details:
+* Questions stored in `questions.json` with question text, options, and correct answer
 
-  * Employee ID
-  * Employee Name
-  * Basic Salary
-  * Bonus
-  * Deductions
+### Read Questions Dynamically
 
-* Automatically calculates:
+* Questions loaded at runtime using `json.load()`
 
-  * Gross Salary
-  * Net Salary
+### Shuffle Questions Randomly (Bonus)
 
-* Prevents duplicate Employee IDs
+* Questions are shuffled using `random.shuffle()` each time the quiz starts
 
-### Employee Search
+### Score Calculation and Performance Display
 
-* Search and retrieve employee details by Employee ID
-* Displays all stored information for the matched employee
+* Tracks correct answers and calculates percentage
+* Displays performance category:
+  * Excellent (100%)
+  * Good (60% and above)
+  * Average (40% and above)
+  * Poor (below 40%)
 
-### Payroll Summary
+### Exception Handling
 
-* Displays total number of registered employees
-* Calculates and displays total gross salary
-* Calculates and displays total net salary
-
-### Payroll Report Export
-
-* Exports all employee records to a CSV file
-* Report includes all salary fields for each employee
-
-### Data Persistence
-
-* Stores all employee records in a JSON file
-* Loads existing data automatically on application startup
-* Saves updates after every registration
-
-## Salary Calculation
-
-**Gross Salary**
-
-```text
-Gross Salary = Basic Salary + Bonus
-```
-
-**Net Salary**
-
-```text
-Net Salary = Gross Salary - Deductions
-```
+* Validates user input using `try/except ValueError`
+* Only accepts A, B, C, or D as valid answers
+* Re-prompts on invalid input
 
 ## Technologies Used
 
 * Python 3
 * JSON File Handling
-* CSV File Handling
-* Functions and Modular Programming
+* Random Module
 * Exception Handling
-* Lists and Dictionaries
 
 ## Files Included
 
-### employee_payroll_management_system.py
+### quiz_application.py
 
-Main application file containing:
+Main application file containing the quiz logic, input validation, score calculation, and performance display.
 
-* Employee registration logic
-* Salary calculation functions
-* Search functionality
-* Payroll summary generation
-* CSV export feature
-* Menu-driven interface
+### questions.json
 
-### employees.json
-
-JSON file used to store all employee records persistently.
-
-### payroll_report.csv
-
-CSV file generated when the export option is selected from the menu.
-
-## Functionalities
-
-### Register Employee
-
-Allows users to add a new employee with salary details. Validates that the Employee ID is unique and all numeric inputs are valid.
-
-### Search Employee
-
-Allows users to search for an employee by their ID and view all their salary details.
-
-### Payroll Summary
-
-Displays aggregate payroll data including total number of employees and total gross and net salary.
-
-### Export Payroll Report
-
-Exports all employee records into a CSV file named payroll_report.csv.
+JSON file storing the quiz questions with options and correct answers.
 
 ## Learning Outcomes
 
-Through this project, the following concepts were practiced:
-
-* Python Functions
-* File Handling
-* JSON Serialization
-* CSV Writing
-* Data Structures (Lists and Dictionaries)
+* JSON File Reading
+* Random Shuffling
 * Exception Handling
-* Modular Programming
-* Payroll Data Processing
+* Score Calculation and Conditional Logic
