@@ -27,15 +27,3 @@ python inventory_billing_system.py
 ## Files
 
 - `inventory_billing_system.py`: The main program.
-
-## Output Screenshots
-
-![Output 1](output_screenshots/output_add_view.png)
-
-![Output 2](output_screenshots/output_update_delete.png)
-
-![Output 3](output_screenshots/output_generate_bill.png)
-
-![Output 4](output_screenshots/output_daily_sales.png)
-
-![Output 5](output_screenshots/output_invoice_txt.png)
