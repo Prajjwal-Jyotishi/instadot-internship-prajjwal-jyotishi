@@ -27,6 +27,12 @@ python inventory_billing_system.py
 ## Files
 
 - `inventory_billing_system.py`: The main program.
-
 ## Output Screenshots
+
+<img width="1097" height="852" alt="Screenshot 2026-06-20 180841" src="https://github.com/user-attachments/assets/c4305bb7-82fd-44c6-a3c5-043002caddf2" />
+<img width="1088" height="843" alt="Screenshot 2026-06-20 180859" src="https://github.com/user-attachments/assets/88e4b826-2ae2-4f6f-af2a-f62808552325" />
+<img width="1103" height="855" alt="Screenshot 2026-06-20 180919" src="https://github.com/user-attachments/assets/9ef04c19-ea54-4ae3-8e5b-449f0c810582" />
+<img width="921" height="806" alt="Screenshot 2026-06-20 180943" src="https://github.com/user-attachments/assets/73abd8e3-8276-4c56-9f02-865463da9cbb" />
+<img width="912" height="800" alt="Screenshot 2026-06-20 180959" src="https://github.com/user-attachments/assets/eeb10ddc-0965-4a5a-9131-9e425083634a" />
+<img width="607" height="485" alt="Screenshot 2026-06-20 182021" src="https://github.com/user-attachments/assets/469d78b2-e644-4ada-9ddc-c7a4f6f9dcf2" />
 
