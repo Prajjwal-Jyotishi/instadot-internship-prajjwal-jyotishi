@@ -37,3 +37,5 @@ python inventory_billing_system.py
 ![Output 3](output_screenshots/output_generate_bill.png)
 
 ![Output 4](output_screenshots/output_daily_sales.png)
+
+![Output 5](output_screenshots/output_invoice_txt.png)
