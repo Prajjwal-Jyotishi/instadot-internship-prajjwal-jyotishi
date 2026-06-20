@@ -27,3 +27,6 @@ python inventory_billing_system.py
 ## Files
 
 - `inventory_billing_system.py`: The main program.
+
+## Output Screenshots
+
