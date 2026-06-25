@@ -20,6 +20,17 @@ Student Attendance Management System — a modular, console-based Python project
 
 ---
 
+## Deliverables
+
+| Deliverable | Status | Details |
+|---|---|---|
+| ✅ Python Project Structure | Complete | 3-layer modular structure: `storage.py` → `system.py` → `main.py` |
+| ✅ GitHub Repository | Complete | [day-10 branch](https://github.com/Prajjwal-Jyotishi/instadot-internship-prajjwal-jyotishi/tree/day-10) |
+| ✅ Clean Source Code | Complete | Minimal, readable, no unnecessary complexity |
+| ✅ Console/UI Output Screenshots | Complete | 6 HD screenshots in `screenshots/` folder |
+
+---
+
 ## Project Structure
 
 ```
