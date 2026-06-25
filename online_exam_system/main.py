@@ -6,17 +6,12 @@ def main():
     current_name = None
 
     while True:
-        print("\n--- Online Examination System ---")
         if current_sid:
-            print(f"Logged in as: {current_name} ({current_sid})")
-            print("1. Take Exam")
-            print("2. View My Results")
-            print("3. Logout")
+            print(f"\n--- Online Examination System ---\nLogged in as: {current_name} ({current_sid})\n"
+                  f"1. Take Exam\n2. View My Results\n3. Logout\n0. Exit")
         else:
-            print("1. Student Login")
-            print("2. View All Results (Admin)")
-
-        print("0. Exit")
+            print(f"\n--- Online Examination System ---\n1. Student Login\n"
+                  f"2. View All Results (Admin)\n0. Exit")
 
         choice = input("\nEnter choice: ").strip()
 

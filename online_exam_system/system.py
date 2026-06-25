@@ -37,12 +37,10 @@ def run_exam(sid, name):
             print("\nTime's up! Auto-submitting...")
             break
 
-        print(f"Q{i + 1}/{total}  [Time left: {remaining // 60}m {remaining % 60}s]")
-        print(q["question"])
-        print(f"  A. {q['option_a']}")
-        print(f"  B. {q['option_b']}")
-        print(f"  C. {q['option_c']}")
-        print(f"  D. {q['option_d']}")
+        print(f"Q{i + 1}/{total}  [Time left: {remaining // 60}m {remaining % 60}s]\n"
+              f"{q['question']}\n"
+              f"  A. {q['option_a']}\n  B. {q['option_b']}\n"
+              f"  C. {q['option_c']}\n  D. {q['option_d']}")
 
         ans = input("Answer (A/B/C/D): ").strip().upper()
         if ans not in ("A", "B", "C", "D"):
@@ -69,16 +67,12 @@ def run_exam(sid, name):
     }
     save_result(result)
 
-    print(f"\n{'=' * 40}")
-    print(f"  Result Summary")
-    print(f"{'=' * 40}")
-    print(f"  Name      : {name}")
-    print(f"  Score     : {score}/{total}")
-    print(f"  Percentage: {percentage}%")
-    print(f"  Time Taken: {time_taken}s")
-    print(f"  Grade     : {'PASS' if percentage >= 50 else 'FAIL'}")
-    print(f"{'=' * 40}")
-    print("Result saved to data/results.csv")
+    print(f"\n{'=' * 40}\n  Result Summary\n{'=' * 40}\n"
+          f"  Name      : {name}\n"
+          f"  Score     : {score}/{total}\n  Percentage: {percentage}%\n"
+          f"  Time Taken: {time_taken}s\n"
+          f"  Grade     : {'PASS' if percentage >= 50 else 'FAIL'}\n"
+          f"{'=' * 40}\nResult saved to data/results.csv")
 
 
 def view_my_results(sid):
@@ -86,11 +80,8 @@ def view_my_results(sid):
     if not results:
         print(f"No results found for ID '{sid}'.")
         return
-    print(f"\n{'=' * 55}")
-    print(f"  Results for Student ID: {sid}")
-    print(f"{'=' * 55}")
-    print(f"{'#':<4} {'Score':<8} {'%':<8} {'Time':<12} {'Date'}")
-    print("-" * 55)
+    print(f"\n{'=' * 55}\n  Results for Student ID: {sid}\n{'=' * 55}\n"
+          f"{'#':<4} {'Score':<8} {'%':<8} {'Time':<12} {'Date'}\n" + "-" * 55)
     for i, r in enumerate(results, 1):
         print(f"{i:<4} {r['score']}/{r['total']:<6} {r['percentage']:<8} {r['time_taken']:<12} {r['date']}")
 
@@ -100,10 +91,7 @@ def view_all_results():
     if not results:
         print("No results yet.")
         return
-    print(f"\n{'=' * 65}")
-    print(f"  All Exam Results")
-    print(f"{'=' * 65}")
-    print(f"{'ID':<12} {'Name':<20} {'Score':<8} {'%':<8} {'Date'}")
-    print("-" * 65)
+    print(f"\n{'=' * 65}\n  All Exam Results\n{'=' * 65}\n"
+          f"{'ID':<12} {'Name':<20} {'Score':<8} {'%':<8} {'Date'}\n" + "-" * 65)
     for r in results:
         print(f"{r['student_id']:<12} {r['name']:<20} {r['score']}/{r['total']:<6} {r['percentage']:<8} {r['date']}")
