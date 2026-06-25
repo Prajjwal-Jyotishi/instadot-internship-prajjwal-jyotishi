@@ -6,3 +6,6 @@ __pycache__/
 # Data files (runtime generated)
 data/
 data_test/
+
+# Keep screenshots
+!screenshots/
