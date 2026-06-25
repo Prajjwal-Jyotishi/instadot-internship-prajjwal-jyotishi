@@ -1,0 +1,10 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Data files (runtime generated)
+data/
+
+# Keep screenshots
+!screenshots/
